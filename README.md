@@ -1,3 +1,10 @@
+```sh
+git clone git@github.com:reergymerej/elm-19-setup.git your-project
+cd your-project
+rm -rf .git
+git init
+```
+
 ## Install
 ```
 yarn
