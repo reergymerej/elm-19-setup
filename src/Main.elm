@@ -10,25 +10,39 @@ type alias Model =
     { greeting : String }
 
 
-init : Model
-init =
-    { greeting = "Hello"
-    }
+type Msg
+    = Hello
 
 
-update : msg -> Model -> Model
-update msg model =
-    model
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( { greeting = "Hello"
+      }
+    , Cmd.none
+    )
 
 
-view : Model -> Html msg
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Sub.none
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update _ model =
+    ( model
+    , Cmd.none
+    )
+
+
+view : Model -> Html Msg
 view model =
     div [] [ text model.greeting ]
 
 
 main =
-    Browser.sandbox
+    Browser.element
         { init = init
+        , subscriptions = subscriptions
         , update = update
         , view = view
         }
